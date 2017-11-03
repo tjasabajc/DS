@@ -1,0 +1,99 @@
+\documentclass{beamer}
+
+\usepackage[slovene]{babel}
+\usepackage{amsfonts,amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+
+\usetheme{Warsaw}
+
+\def\N{\mathbb{N}} % mnozica naravnih stevil
+\def\Z{\mathbb{Z}} % mnozica celih stevil
+\def\Q{\mathbb{Q}} % mnozica racionalnih stevil
+\def\R{\mathbb{R}} % mnozica realnih stevil
+\def\C{\mathbb{C}} % mnozica kompleksnih stevil
+
+
+\def\qed{$\hfill\Box$}   % konec dokaza
+\newtheorem{izrek}{Izrek}
+\newtheorem{trditev}{Trditev}
+\newtheorem{posledica}{Posledica}
+\newtheorem{lema}{Lema}
+\newtheorem{definicija}{Definicija}
+\newtheorem{pripomba}{Pripomba}
+\newtheorem{primer}{Primer}
+\newtheorem{zgled}{Zgled}
+\newtheorem{zgledi}{Zgledi uporabe}
+\newtheorem{zglediaf}{Zgledi aritmetičnih funkcij}
+\newtheorem{oznaka}{Oznaka}
+
+\title{Geometrijska interpolacija štirih točk s parabolično krivuljo}
+\author{Tjaša Bajc}
+\institute{mentorica \\ izr.~prof.~dr.~Marjetka Knez}
+
+%\date{24.\ februar 2017}
+
+\begin{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Opis problema}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Geometrijska interpolacija}
+
+Opazujemo šritikotnik, ki ga tvorijo dane štiri točke. Od lastnosti tega štirikotnika je odvisno, ali točke lahko interpoliramo s parabolično krivuljo.
+
+\begin{izrek}
+Naj bo $P = \{ P_0, P_1,  P_2, P_3 \}$ nabor štirih točk, od katerih nobene tri niso kolinearne.
+
+\begin{enumerate}[i)]
+\item Če so točke iz $P$ oglišča konkavnega štirikotnika, danih točk ne moremo interpolirati s parabolo.
+\item Če so točke iz $P$ oglišča paralelograma, danih točk ne moremo interpolirati s parabolo.
+\item Če so točke iz $P$ oglišča trapeza, ki ni paralelogram, lahko dane točke interpoliramo z natanko eno parabolo.
+\item Če so točke iz $P$ oglišča konveksnega štirikotnika, ki ni trapez, lahko dane točke interpoliramo z natanko dvema parabolama.
+\end{enumerate}
+
+\end{izrek}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Lagrangeevi bazni polinomi}
+
+\begin{definicija}
+
+$$ \ell_{i,n}(t) = \prod_{\substack{j=0 \\  j \neq i}}^{n} \frac{t - t_j}{t_i - t_j}, \quad  i = 0, \ldots, n$$
+\end{definicija}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Razširitve teme}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\end{document}
