@@ -32,7 +32,7 @@
 \author{Tjaša Bajc}
 \institute{mentorica \\ izr.~prof.~dr.~Marjetka Knez}
 
-%\date{24.\ februar 2017}
+\date{13.\ november 2017}
 
 \begin{document}
 
@@ -48,6 +48,20 @@
 \begin{frame}
 \frametitle{Opis problema}
 
+Vprašanje je, ali obstaja parabolična krivulja, ki poteka skozi dane štiri točke v ravnini. Če obstaja, nas zanima, koliko je takih krivulj.
+
+Problema se bomo lotili na dva načina.
+
+\begin{itemize}
+
+\item \textbf{Geometrijski pristop} \\
+Obravnavamo lik, katerega oglišča so dane točke.
+
+\item \textbf{Interpolacija} \\
+ Pomagali si bomo z razvojem po Lagrangeevih baznih polinomih.
+
+\end{itemize}
+
 \end{frame}
 
 
@@ -56,16 +70,20 @@
 \begin{frame}
 \frametitle{Geometrijska interpolacija}
 
-Opazujemo šritikotnik, ki ga tvorijo dane štiri točke. Od lastnosti tega štirikotnika je odvisno, ali točke lahko interpoliramo s parabolično krivuljo.
+Opazujemo štirikotnik, ki ga tvorijo dane štiri točke. Od lastnosti tega štirikotnika je odvisno, ali točke lahko interpoliramo s parabolično krivuljo.
 
 \begin{izrek}
-Naj bo $P = \{ P_0, P_1,  P_2, P_3 \}$ nabor štirih točk, od katerih nobene tri niso kolinearne.
+Naj bo $Q = \{ Q_0, Q_1, Q_2, Q_3 \}$ nabor štirih točk, od katerih nobene tri niso kolinearne.
 
 \begin{enumerate}[i)]
-\item Če so točke iz $P$ oglišča konkavnega štirikotnika, danih točk ne moremo interpolirati s parabolo.
-\item Če so točke iz $P$ oglišča paralelograma, danih točk ne moremo interpolirati s parabolo.
-\item Če so točke iz $P$ oglišča trapeza, ki ni paralelogram, lahko dane točke interpoliramo z natanko eno parabolo.
-\item Če so točke iz $P$ oglišča konveksnega štirikotnika, ki ni trapez, lahko dane točke interpoliramo z natanko dvema parabolama.
+\pause
+\item Če so točke iz $Q$ oglišča konkavnega štirikotnika, danih točk ne moremo interpolirati s parabolično krivuljo.
+\pause
+\item Če so točke iz $Q$ oglišča paralelograma, danih točk ne moremo interpolirati s parabolično krivuljo.
+\pause
+\item Če so točke iz $Q$ oglišča trapeza, ki ni paralelogram, lahko dane točke interpoliramo z natanko eno parabolično krivuljo.
+\pause
+\item Če so točke iz $Q$ oglišča konveksnega štirikotnika, ki ni trapez, lahko dane točke interpoliramo z natanko dvema paraboličnima krivuljama.
 \end{enumerate}
 
 \end{izrek}
@@ -78,17 +96,18 @@ Naj bo $P = \{ P_0, P_1,  P_2, P_3 \}$ nabor štirih točk, od katerih nobene tr
 \begin{frame}
 \frametitle{Lagrangeevi bazni polinomi}
 
+Lagrangeevi bazni polinomi tvorijo bazo za prostor polinomov določene stopnje.
+
+\pause
+Oglejmo si polinome $ \ell_{0,2}(t), \ell_{1,2}(t) $ in $ \ell_{2,2}(t) $, ki so baza za prostor polinomov druge stopnje.
+
 \begin{definicija}
 
-$$ \ell_{i,n}(t) = \prod_{\substack{j=0 \\  j \neq i}}^{n} \frac{t - t_j}{t_i - t_j}, \quad  i = 0, \ldots, n$$
+	$$ \ell_{0,2}(t) =  \frac{(t - t_1)(t - t_2)}{(t_0 - t_1)(t_0 - t_2)} $$
+	$$ \ell_{1,2}(t) =  \frac{(t - t_0)(t - t_2)}{(t_1 - t_0)(t_1 - t_2)} $$
+	$$ \ell_{2,2}(t) =  \frac{(t - t_0)(t - t_1)}{(t_2 - t_0)(t_2 - t_1)} $$
+
 \end{definicija}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-\frametitle{Razširitve teme}
 
 \end{frame}
 
