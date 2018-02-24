@@ -272,15 +272,69 @@ Definirajmo najprej Lagrangeeve bazne polinome v splošnem, kasneje pa bomo konk
 \begin{definicija}
 Lagrangeeve bazne polinome stopnje $n$ definiramo
 
-$$ \ell_{i,n}(t) = \Pi $$	
+$$ \ell_{i,n}(t) = \prod_{\substack{j=0 \\ j \neq i}}^{n} \frac{t - t_j}{t_i - t_j} , \qquad i = 0, 1, \ldots n.$$	
 \end{definicija}
 
+Lagrangeevi bazni polinomi so vsi stopnje $n$. Poleg tega zanje velja $$\ell_{i,n}(t_j) = \delta_{ij}.$$
+Oglejmo si polinome $ \ell_{0,3}(t), \ell_{1,3}(t), \ell_{2,3}(t)$ in $ \ell_{3,3}(t) $, ki so baza za prostor polinomov tretje stopnje:
 
-Oglejmo si polinome $ \ell_{0,3}(t), \ell_{1,3}(t), \ell_{2,3}(t)$ in $ \ell_{3,3}(t) $, ki so baza za prostor polinomov tretje stopnje.
-	$$ \ell_{0,3}(t) =  \frac{(t - t_1)(t - t_2)(t - t_3)}{(t_0 - t_1)(t_0 - t_2)(t_0 - t_3)} $$
-	$$ \ell_{1,3}(t) =  \frac{(t - t_0)(t - t_2)}{(t_1 - t_0)(t_1 - t_2)} $$
-	$$ \ell_{2,3}(t) =  \frac{(t - t_0)(t - t_1)}{(t_2 - t_0)(t_2 - t_1)} $$
+\begin{align*}
+	\ell_{0,3}(t) &= \frac{(t - t_1)(t - t_2)(t - t_3)}{(t_0 - t_1)(t_0 - t_2)(t_0 - t_3)}, \\
+	\ell_{1,3}(t) &= \frac{(t - t_0)(t - t_2)(t - t_2)}{(t_1 - t_0)(t_1 - t_2)(t_1 - t_3)}, \\
+	\ell_{2,3}(t) &= \frac{(t - t_0)(t - t_1)(t - t_3)}{(t_2 - t_0)(t_2 - t_1)(t_2 - t_3)}, \\
+	\ell_{3,3}(t) &= \frac{(t - t_0)(t - t_1)(t - t_2)}{(t_3 - t_0)(t_3 - t_1)(t_3 - t_2)}. 	
+\end{align*}
 
+Interpolacijsko krivuljo lahko razvijemo po Lagrangeevih baznih polinomih kot 
+\begin{equation}\label{razvoj}
+p(t) = \sum_{i=0}^{3} a_i \ell_{i,n}(t),
+\end{equation}
+
+kjer so $a_i \in \R$ neznani koeficienti.
+
+Hitro lahko vidimo, kaj so koeficienti $a_i$ pri interpolacijskem polinomu. Uvodoma smo zapisali, da naj za $\textbf{p}$ velja, da je $\textbf{p}(t_j) = P_j$. Ko vstavimo $t_j$ v \eqref{razvoj}, dobimo
+\begin{align*}
+\textbf{p}(t_j) &=  \sum_{i=0}^{3} a_i \ell_{i,n}(t_j) \\
+	 &= \sum_{i=0}^{3} a_i \delta_{ij} \\
+	&= a_j
+,\end{align*}
+
+od koder sledi, da so iskani koeficienti kar točke, ki jih interpoliramo. Interpolacijski polinom v Lagrangeevi obliki torej zapišemo kot 
+$$\textbf{p}(t) = \sum_{i=0}^{3} T_i \ell_{i,n}(t).$$
+
+Spomnimo, da so polinomi $\ell_{i,n}$ stopnje tri. Ker iščemo parabolično krivuljo, mora biti vodilni koeficient enak nič. To nam da nelinearen sistem
+\begin{equation}\label{vodkoef}
+\sum_{i = 0}^{3} \frac{T_i}{\prod_{\substack{j = 0 \\ j \neq i}}^3(t_i - t_j)} = 0
+\end{equation}
+
+za neznana parametra $t_1$ in $t_2$, enačbi pa dobimo iz komponent \eqref{vodkoef}, saj so $T_i$ točke v ravnini.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Hermitov primer}
+
+Nazadnje si oglejmo še naslednji interpolacijski problem. Za dani različni točki $T_0$ in $T_1$ v ravnini in dani smeri $d_0, d_1, \lVert d_0 \rVert = \lVert d_1 \rVert = 1,$ želimo najti parabolično krivuljo $\textbf{p} : [ 0, 1 ] \rightarrow \R^2,$ da bo veljalo
+\begin{align*}
+\textbf{p}(0) = T_0&, \qquad \textbf{p}(1) = T_1, \\
+\textbf{p'}(0) = d_0 d_0&, \qquad \textbf{p'}(1) = d_1 d_1 
+\end{align*}
+
+za skalarja $d_0, d_1 > 0$
+
+Podobno kot v prejšnjem poglavju bomo zapisali interpolacijsko krivuljo stopnje tri in določili taki $d_0$ in $d_1$ tako, da bo vodilni koeficient enak nič. Na ta način bomo dobili parabolično krivuljo. Interpolacijsko krivuljo zapišemo s pomočjo deljenih diferenc:
+
+\begin{align*}
+\textbf{p}(t) &= \textbf{p}(0) + t [0,0]\textbf{p} + t^2[0,0,1]\textbf{p} + t^2(t - 1)[0,0,1,1]\textbf{p} \\
+	&= T_0 + t d_0 + t^2(T_1 - t_0 - d_o) + t^2(t - 1)(d_0 + d_1 - 2(T_1 - T_0))
+.\end{align*}
+
+Rešiti moramo torej enačbo
+
+\begin{equation}
+d_0 + d_1 - 2(T_1 - T_0) = 0
+.\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{Slovar strokovnih izrazov}
 
