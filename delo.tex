@@ -14,6 +14,7 @@
 \newcommand{\B}{\mathbb B}
 \newcommand{\al}{\alpha}
 
+
 % matematične operatorje deklarirajte kot take, da jih bo Latex pravilno stavil
 % \DeclareMathOperator{\conv}{conv}
 
@@ -56,18 +57,18 @@
 
 \section{Uvod}
 
-Opazujmo štiri točke v ravnini. Zanimalo nas bo, kdaj lahko skoznje potegnemo parabolično krivuljo, oziroma koliko je takih krivulj. Na primer, če so točke kolinearne, take paraboične krivulje očitno ne bomo našli. Kaj pa v ostalih primerih? Izkaže se, da je dovolj opazovati štirikotnik, katerega oglišča so dane točke. Pokazali bomo, da oglišča konkavnega štirikotnika, ki ni trapez, lahko interpoliramo z natanko dvema paraboličnima krivuljama, oglišča trapeza, ki ni paralelogram, pa z natanko eno parabolično krivuljo. V preostalih primerih štirih točk ne moremo interpolirati s parabolično krivuljo.
+Imamo štiri točke v ravnini. Zanima nas, kdaj lahko skoznje potegnemo parabolično krivuljo, to je parametrično polinomsko krivuljo stopnje dve, oziroma koliko je takih krivulj. Na primer, če so točke kolinearne, take prave paraboične krivulje očitno ne bomo našli. Kaj pa v ostalih primerih? Izkaže se, da je dovolj opazovati štirikotnik, katerega oglišča so dane točke. Pokazali bomo, da oglišča konveksnega štirikotnika, ki ni trapez, lahko interpoliramo z natanko dvema paraboličnima krivuljama, oglišča trapeza, ki ni paralelogram, pa z natanko eno parabolično krivuljo. V preostalih primerih štirih točk ne moremo interpolirati s parabolično krivuljo.
 
-Poleg geometrijskega pristopa, ki smo ga na kratko povzeli zgoraj, se interpolacije lahko lotimo tudi z Lagrangeevimi baznimi polinomi. Vemo, da lahko štiri točke vedno interpoliramo s kubično krivuljo. Definirali bomo Lagrangeeve polinome stopnje tri in določili pogoje za proste parametre tako, da bo vodilni koeficient interpolacijskega polinoma enak $0$. Tako bomo dobili interpolacijski polinom stopnje dve, torej parabolično krivuljo.
+Poleg geometrijskega pristopa, ki smo ga na kratko povzeli zgoraj, se interpolacije lahko lotimo tudi z Lagrangeevimi baznimi polinomi. Vemo, da lahko štiri točke vedno interpoliramo s kubično krivuljo. Definirali bomo Lagrangeeve polinome stopnje tri in določili pogoje za proste parametre tako, da bo vodilni koeficient interpolacijskega polinoma enak $0$. Tako bomo dobili interpolacijsko polinomsko krivuljo stopnje dve, torej parabolično krivuljo.
 
-V nadaljevanju si bomo ogledali še Hermitov problem. Namesto štirih točk bomo opazovali le dve, v katerih pa bomo poleg vrednosti predpisali tudi smer tangentnega vektorja. Poiskali bomo interpolacijsko krivuljo, ki bo zadoščala danim pogojem. Hermitov problem lahko posplošimo na več točk in opazujemo zlepke, ki jih dobimo z interpolacijo posameznih parov točk. Zlepek, ki ga dobimo na tak način, je gladka krivulja, ki interpolira dane točke. 
+V nadaljevanju si bomo ogledali še Hermitov problem. Namesto štirih točk bomo opazovali le dve, v katerih pa bomo poleg vrednosti predpisali tudi smer tangentnega vektorja. Poiskali bomo interpolacijsko krivuljo, ki bo zadoščala danim pogojem. Hermitov problem lahko posplošimo na več točk in opazujemo zlepke, ki jih dobimo z interpolacijo posameznih parov točk. Zlepek, ki ga dobimo na tak način, je geometrijsko zvezna krivulja, ki interpolira dane točke. 
 
 \section{Geometrijska interpolacija}
 
-Za začetek definirajmo nekaj pojmov, ki jih bomo potrebovali kasneje.
+Za začetek definirajmo nekaj pojmov, ki jih bomo potrebovali v nadaljevanju.
 
 \begin{definicija}
-Naj bo $A'$ nesingularna $2\times2$ realna matrika in $d, e$ realni števili. 
+Naj bo $A'$ nesingularna $2\times2$ realna matrika, $d, e$ realni števili ter 
 $$ A = 
 \begin{bmatrix}
 A' &
@@ -92,14 +93,13 @@ Preko afinih matrik vpeljemo ekvivalenčno relacijo na množici realnih simetri�
 
 \begin{definicija}
 Matriki $B$ in $C$ sta \emph{afino podobni}, če obstaja afina matrika $A$, da velja $B = A C A^{T}$.
+Da sta matriki afino podobni, označimo z $B \approx C$.
 \end{definicija}
-
-Da sta matriki afino podobni, bomo označili z $B \approx C$. 
 
 % Ali je to potrebno dokazati? Da je res EKV relacija?
 
 \begin{definicija}
-Definirajmo matriko $D$, 
+Definirajmo matriko 
 
 $$D = 
 \begin{bmatrix}
@@ -108,11 +108,14 @@ $$D =
 1 & 0 & 0
 \end{bmatrix}.
 $$
-Definirajmo še podmnožico relanih simetričnih $3 \times 3$ matrik $$\PP = \{ B; B \approx d D, d \neq 0 \} .$$
-\emph{Parabolična krivulja} je množica točk v ravnini $$ C_B = \{ (x,y); (x,y,1) B (x, y, 1)^T = 0 \}.$$
+Definirajmo še podmnožico realnih simetričnih $3 \times 3$ matrik $$\PP = \{ B; B \approx d D, d \neq 0 \} .$$
+\emph{Parabolična krivulja} je množica točk v ravnini 
+\begin{equation}\label{implicitna}
+ C_B = \{ (x,y); (x,y,1) B (x, y, 1)^T = 0, B \in \PP \}.
+ \end{equation}
 \end{definicija}
 
-Če je matrika $B$ enaka $D$, je množica $C_B$ kar $x = y^2$.
+Če je matrika $B$ enaka $D$, je množica $C_B$ kar $C_B = \{ (x,y); x = y^2 \}$.
 
 \begin{zgled}
 
@@ -122,7 +125,7 @@ matriko $B$ in sliko parabole, ki jo podaja $C_B$)
 
 \end{zgled}
 
-Parabolično krivuljo lahko podamo v implicitni obliki kot zgoraj ali pa v parametrični obliki. Definirajmo kvadratično parametrizacijo parabolične krivulje, podane s $C_B$.
+Parabolično krivuljo lahko podamo v implicitni obliki kot v \eqref{implicitna} ali pa v parametrični obliki. Definirajmo kvadratično parametrizacijo parabolične krivulje, podane s $C_B$.
 
 \begin{definicija}
 Naj bodo $p(t)$, $q(t)$ in $r(t) \equiv 1$ linearno neodvisni polinomi stopnje največ dve. Če za nek $B$ iz množice $\PP$ velja 
@@ -130,7 +133,7 @@ $$ C_B = \{ (x,y); (x,y,1) B (x, y, 1)^T = 0 \} = \{ (p(t), q(t)); t \in \R \},$
 pravimo, da je $( p(t), q(t), 1)$ \emph{kvadratična parametrizacija} parabolične krivulje $C_B$.
 \end{definicija}
 
-Kako bi krivuljo zapisali v standardni bazi $(t^2, t, 1)$? Najprej definirajmo matriko koeficientov, ki povezuje kvadratično parametrizacijo in zapis v standardni bazi, nato pa bomo pokazali, da lahko vsako parabolično krivuljo zapišemo v kvadratični parametrizaciji.
+Poglejmo, kako bi parametrično krivuljo zapisali v standardni bazi $t^2, t, 1$? Najprej bomo definirali matriko koeficientov, ki povezuje kvadratično parametrizacijo in zapis v standardni bazi, nato pa bomo pokazali, da lahko vsako parabolično krivuljo zapišemo v kvadratični parametrizaciji.
 
 \begin{definicija}
 Naj bodo $p(t)$, $q(t)$ in $r(t) \equiv 1$ linearno neodvisni polinomi stopnje največ dve. \emph{Matrika koeficientov $K$} je taka matrika, da velja $ (p(t), q(t), 1) = (t^2,t,1) K$.
@@ -155,13 +158,14 @@ Ali lahko vsako trojico različnih točk interpoliramo s parabolično krivuljo?
 Različnih kolinearnih točk $P_0, P_1, P_2$ ne moremo interpolirati s parabolično krivuljo.
 \end{trditev}
 
-Imejmo sedaj tri točke v ravnini $P_0, P_1, P_2$. Iščemo parabolično krivuljo, ki jih bo interpolirala, torej take vrednosti parametrov $t_0, t_1, t_2$, da bo veljalo
+Imejmo sedaj tri točke v ravnini $P_0, P_1, P_2$. Iščemo parabolično krivuljo $(p, q)$, ki bo pri nekih parametrih $t_0, t_1, t_2$ interpolirala dane točke, to je % JE TO PRAV ???
+
 $$ P_0 = (p(t_0), q(t_0)), \qquad P_1 = (p(t_1), q(t_1)), \qquad P_2 = (p(t_2), q(t_2)).$$
-Za parametre $t_0, t_1, t_2$ lahko zahtevamo $t_0 < t_1 < t_2$ in še dodatno $t_0 = 0$ in $t_2 = 1$. Za poljuben $t_2 \in (0,1)$  lahko najdemo taka $p(t), q(t)$ stopnje največ dve, da bo krivulja $ \{(p(t), q(t)), t \in [0,1] \}$ rešila naš interpolacijski problem. Označimo $t_2$ z $\al.$  Polinoma $p$ in $q$ torej lahko dobimo z reševanjem sistema enačb
+Za parametre $t_0, t_1, t_2$ lahko zahtevamo $t_0 < t_1 < t_2$ in še dodatno $t_0 = 0$ in $t_2 = 1$. Za poljuben $t_1 \in (0,1)$  lahko najdemo taka $p(t), q(t)$ stopnje največ dve, da bo krivulja $ \{(p, q), t \in [0,1] \}$ rešila naš interpolacijski problem. Označimo $t_1$ z $\al.$  Polinoma $p$ in $q$  lahko dobimo z reševanjem sistema enačb
 \begin{equation}\label{sistem}
 P_0 = (p(0), q(0)), \qquad P_1 = (p(\al), q(\al)), \qquad P_2 = (p(1), q(1)).
 \end{equation}
-Omenimo še, da je z izbiro $\al$ interpolacijska krivulja natanko določena, saj je zgornji sistem nelinearni sistem šestih enačb za šest neznank (koeficienti polinomov $p$ in $q$).
+Omenimo še, da je z izbiro $\al$ interpolacijska krivulja natanko določena, saj je zgornji sistem linearni sistem šestih enačb za šest neznank (koeficienti polinomov $p$ in $q$).
 
 Pokazali bomo, da lahko kvadratično parametrizacijo $(p(t), q(t),1)$ dobimo tudi drugače. Pred tem definirajmo še Vandermondovo matriko za naš primer, torej za parametre $t_0 = 0, t_1 = \al$ in $t_2 = 1$, in konfiguracijsko matriko za dane točke.
 
@@ -186,7 +190,7 @@ P_2 & 1
 
 
 \begin{trditev}
-Naj bodo $P_0, P_1, P_2$  nekolinearne točne. Enolična kvadratična parametrizacija $(p(t), q(t))$, ki zadošča sistemu \eqref{sistem}, je podana z naslednjim predpisom:
+Naj bodo $P_0, P_1, P_2$  nekolinearne točke. Enolična kvadratična parametrizacija $(p, q)$, ki zadošča sistemu \eqref{sistem}, je podana z naslednjim predpisom:
 $$ \Phi_\al(t; P_0, P_1, P_2) = (t^2, t, 1) V(\al)^{-1} R(P_0, P_1, P_2).$$
 \end{trditev}
 
@@ -199,12 +203,12 @@ $$A_{\al} = V(\al) \ D \ V(\al)^T $$
 in
 $$B_{\al} =  R(P_0, P_1, P_2)^{-1}\  A_{\al} \  (R(P_0, P_1, P_2)^{-1})^T.$$
 
-Za nekolinearne točke $(P_0, P_1, P_2)$ definiramo množico vseh paraboličnih krivulj, ki potekajo skozi dane točke. Množico označimo z $\B(P_0, P_1, P_2)$.
+Za nekolinearne točke $(P_0, P_1, P_2)$ naj bo $\B(P_0, P_1, P_2)$ množica vseh paraboličnih krivulj, ki potekajo skozi dane točke.
 
 \end{definicija}
 
 \begin{opomba}
-Matriko $A_\al$ enostavno izračunam in zapišemo eksplicitno,
+Matriko $A_\al$ enostavno izračunam in zapišemo eksplicitno z % JE z RES OK?
 $$A_\al = 
 \begin{bmatrix}
 0 & \al^2 & 1 \\
@@ -227,13 +231,13 @@ $$(P_3, 1) = p R(P_0, P_1, P_2).$$ Sledi $ p = (P_3, 1) R(P_0, P_1, P_2)^{-1}$.
 Nekaj lastnosti tako definiranega vektorja $p$ podaja spodnja trditev.
 
 \begin{trditev}
-Za zgoraj definiran $p$ velja $p_0 + p_1 + p_2 = 1$ in $p_i = 0$ natanko tedaj, ko točka $P_3$ leži na isti premici kot točki $P_j$ in $P_k$. 
+Za zgoraj definiran $p$ velja $p_0 + p_1 + p_2 = 1$ in $p_i = 0$ natanko tedaj, ko točka $P_3$ leži na isti premici kot točki $P_j$ in $P_k$, $j, k \in \{0, 1, 2 \}$. 
 \end{trditev}
 
-Označimo sedaj $P = \{ P_0, P_1, P_2, P_3 \}$ nabor štirih točk v ravnini, od katerih nobene tri niso kolinearne. Take točke so oglišča konveksnega štirikotnika, če nobena točka $P_i$ ni v konveksni lupini preostalih treh točk.
+Označimo sedaj s $P = \{ P_0, P_1, P_2, P_3 \}$ nabor štirih točk v ravnini, od katerih nobene tri niso kolinearne. Take točke so oglišča konveksnega štirikotnika, če nobena točka $P_i$ ni v konveksni lupini preostalih treh točk.
 
 \begin{trditev}
-Točke iz $P$ so oglišča konveksnega štirikotnika natanko tedaj, ko velja $p_0 p_1 p_2 < 0$, kjer so $p_0, p_1, p_2$ komponente vektorja $p$, da velja $(P_3, 1) = p R(P_0, P_1, P_2).$
+Točke iz $P$ so oglišča konveksnega štirikotnika natanko tedaj, ko velja $p_0 p_1 p_2 < 0$, kjer so $p_0, p_1, p_2$ komponente vektorja $p$, za katerega velja $(P_3, 1) = p R(P_0, P_1, P_2).$
 \end{trditev}
 
 Sedaj lahko zapišemo glavni izrek prvega poglavja.
@@ -256,9 +260,9 @@ Naj bo $P = \{ P_0, P_1, P_2, P_3 \}$ nabor štirih točk v ravnini, od katerih 
 
 \section{Interpolacija z Lagrangeevimi baznimi polinomi}
 
-Vemo, da lahko štiri točke interpoliramo s kubično krivuljo. Interpolacijsko krivuljo bomo zapisali z Lagrangeevimi baznimi polinomi, kar bo enostavneje, kot če bi delali v standardni bazi. Definirajmo najprej interpolacijski problem.
+V tem poglavju si bomo ogledali rešitev interpolacijskega problema na bolj algebraičen način. Vemo, da lahko štiri točke interpoliramo s kubično krivuljo. Interpolacijsko krivuljo bomo zapisali z Lagrangeevimi baznimi polinomi, kar bo enostavneje, kot če bi delali v standardni bazi. Definirajmo najprej interpolacijski problem.
 
-Za dane točke $T_i$ v ravnini, $i = 0, 1, 2, 3$, iščemo parabolično krivuljo $p : [ 0, 1 ] \rightarrow \R^2$, da bo veljalo $$p(t_i) = T_i, \qquad i = 0, 1, 2, 3$$ 
+Za dane točke $T_i$ v ravnini, $i = 0, 1, 2, 3$, iščemo parabolično krivuljo $\textbf{p} : [ 0, 1 ] \rightarrow \R^2$, da bo veljalo $$\textbf{p}(t_i) = T_i, \qquad i = 0, 1, 2, 3$$ 
 
 Dodatno zahtevamo, da so parametri urejeni, torej $t_0 < t_1 < t_2 < t_3$. Brez škode za splošnost lahko postavimo $t_0 = 0$ in $t_3 = 1$.
 
@@ -268,7 +272,7 @@ Definirajmo najprej Lagrangeeve bazne polinome v splošnem, kasneje pa bomo konk
 \begin{definicija}
 Lagrangeeve bazne polinome stopnje $n$ definiramo
 
-$$ \ell_{i,n} = \Pi $$	
+$$ \ell_{i,n}(t) = \Pi $$	
 \end{definicija}
 
 
