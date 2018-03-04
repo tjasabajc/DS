@@ -16,7 +16,7 @@
 
 
 % matematične operatorje deklarirajte kot take, da jih bo Latex pravilno stavil
-% \DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\conv}{conv}
 
 % na razpolago so naslednja matematična okolja, ki jih kličemo s parom 
 % \begin{imeokolja}[morebitni komentar v oklepaju] ... \end{imeokolja}
@@ -55,13 +55,23 @@
 
 \begin{document}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Uvod}
 
 Imamo štiri točke v ravnini. Zanima nas, kdaj lahko skoznje potegnemo parabolično krivuljo, to je parametrično polinomsko krivuljo stopnje dve, oziroma koliko je takih krivulj. Na primer, če so točke kolinearne, take prave paraboične krivulje očitno ne bomo našli. Kaj pa v ostalih primerih? Izkaže se, da je dovolj opazovati štirikotnik, katerega oglišča so dane točke. Pokazali bomo, da oglišča konveksnega štirikotnika, ki ni trapez, lahko interpoliramo z natanko dvema paraboličnima krivuljama, oglišča trapeza, ki ni paralelogram, pa z natanko eno parabolično krivuljo. V preostalih primerih štirih točk ne moremo interpolirati s parabolično krivuljo.
 
+
 Poleg geometrijskega pristopa, ki smo ga na kratko povzeli zgoraj, se interpolacije lahko lotimo tudi z Lagrangeevimi baznimi polinomi. Vemo, da lahko štiri točke vedno interpoliramo s kubično krivuljo. Definirali bomo Lagrangeeve polinome stopnje tri in določili pogoje za proste parametre tako, da bo vodilni koeficient interpolacijskega polinoma enak $0$. Tako bomo dobili interpolacijsko polinomsko krivuljo stopnje dve, torej parabolično krivuljo.
 
+
 V nadaljevanju si bomo ogledali še Hermitov problem. Namesto štirih točk bomo opazovali le dve, v katerih pa bomo poleg vrednosti predpisali tudi smer tangentnega vektorja. Poiskali bomo interpolacijsko krivuljo, ki bo zadoščala danim pogojem. Hermitov problem lahko posplošimo na več točk in opazujemo zlepke, ki jih dobimo z interpolacijo posameznih parov točk. Zlepek, ki ga dobimo na tak način, je geometrijsko zvezna krivulja, ki interpolira dane točke. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Geometrijska interpolacija}
 
@@ -99,7 +109,6 @@ Da sta matriki afino podobni, označimo z $B \approx C$.
 
 \begin{definicija}
 Definirajmo matriko 
-
 $$D = 
 \begin{bmatrix}
 0 & 0 & 1 \\
@@ -148,11 +157,11 @@ Naj bodo $p(t)$, $q(t)$ in $r(t) \equiv 1$ linearno neodvisni polinomi stopnje n
 
 % NOVO %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{dokaz}
-Matrika $C$ je nesingularna, ker so $p(t), q(t)$ in 1 linearno neodvisni. Zadnja komponenta vektorja $(p(t), q(t), 1)$ je 1, torej mora biti zadnji stolpec matrike $C$ enak $(0,0,1)^T$. Sledi, da je matrika $C$ afina. Za dokaz druge točke trditve se spomnimo definicije kvadratične parametrizacije.
+Matrika $K$ je nesingularna, ker so $p(t), q(t)$ in 1 linearno neodvisni. Zadnja komponenta vektorja $(p(t), q(t), 1)$ je 1, torej mora biti zadnji stolpec matrike $K$ enak $(0,0,1)^T$. Sledi, da je matrika $K$ afina. Za dokaz druge točke trditve se spomnimo definicije kvadratične parametrizacije.
 Velja:
 \begin{align*}
 0 &= (p(t), q(t), 1) B (p(t), q(t), 1)^T \\
-   &= (t^2, t, 1) C B C^T (t^2, t, 1)^T \\
+   &= (t^2, t, 1) K B K^T (t^2, t, 1)^T \\
    &= (t^2, t, 1) 
 \begin{bmatrix}
 a & b & d \\
@@ -162,7 +171,7 @@ d & e & f
 (t^2, t, 1)^T \\
    &= a t^4 + 2 b t^3 + (c+2d)t^2 + 2et + f
 .\end{align*}
-Zgornja enakost velja natanko tedaj, ko je $a=b=e=f=0$ in $c=-2d$. Tedaj je matrika $CBC^T$ oblike
+Zgornja enakost velja natanko tedaj, ko je $a=b=e=f=0$ in $c=-2d$. Tedaj je matrika $KBK^T$ oblike
 $$
 \begin{bmatrix}
 0 & 0 & d \\
@@ -173,7 +182,9 @@ d & 0 & 0
 dD.
 $$
 \end{dokaz}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%
+Zgornja trditev ima dve koristni posledici. Najprej bomo dokazali, da lahko vsako parabolično krivuljo parametriziramo s kvadratično parametrizacijo, kasneje pa še, da različni matriki iz množice $\PP$ ne porodita nujno različnih paraboličnih krivulj.
 
 \begin{posledica}\label{vsakaparabola}
 Vsaka parabolična krivulja ima kvadratično parametrizacijo.
@@ -187,6 +198,24 @@ Matrika $B$ je iz množice $\PP$, ki je definirana kot množica matrik, ki so af
 \end{dokaz}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% NOVO %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{posledica}\label{bb*}
+Naj bosta matriki $B$ in $\widetilde{B}$ elementa množice $\PP$. Enakost $C_B = C_{\widetilde{B}}$ velja natanko tedaj, ko velja $B = d \widetilde{B}$, $d \neq 0$.
+\end{posledica}
+
+\begin{dokaz}
+%Dokaz je enostaven. 
+Upoštevamo definicijo parabolične krivulje in hitro vidimo:
+\begin{align*}
+C_B    &= \{ (x,y); (x,y,1) B (x, y, 1)^T = 0\} \\
+	&= \{ (x,y); (x,y,1) d \widetilde{B} (x, y, 1)^T = 0\} \\
+	&= \{ (x,y); (x,y,1) \widetilde{B} (x, y, 1)^T = 0\} \\
+	&= C_{\widetilde{B}}.
+\end{align*}
+\end{dokaz}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 Ali lahko vsako trojico različnih točk interpoliramo s parabolično krivuljo? 
 
 \begin{trditev}
@@ -195,17 +224,14 @@ Različnih kolinearnih točk $T_0, T_1, T_2$ ne moremo interpolirati s paraboli�
 
 % NOVO %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 % Ta dokaz ni dobro napisan. Razmisli.
 
-
 \begin{dokaz}
-Vsako parabolično krivuljo lahko parametriziramo s $(t^2, t,1)K$ za neko afino matriko $K$. Izberimo tri različne vrednosti parametra $t$, iz katerih dobimo tri linearno neodvisne trojice $(t^2, t, 1)$. Ko vsako od teh trojic pomnožimo z matriko $K$, dobimo tri točke na paraboli, ki pa so gotovo nekolinearne, ker je $K$ afina matrika. Pokazali smo, da ne za nobene tri vrednosti parametra $t$ ne dobimo kolinearnih točk, torej ne moremo najti parabolične krivulje, ki bi potekala skozi kolinearne točke.
+Vsako parabolično krivuljo lahko parametriziramo s $(t^2, t,1)K$ za neko afino matriko $K$. Izberimo tri različne vrednosti parametra $t$, iz katerih dobimo tri linearno neodvisne trojice $(t^2, t, 1)$. Ko vsako od teh trojic pomnožimo z matriko $K$, dobimo tri točke na paraboli, ki so gotovo nekolinearne, ker je $K$ afina matrika. Pokazali smo, da ne za nobene tri vrednosti parametra $t$ ne dobimo kolinearnih točk, torej ne moremo najti parabolične krivulje, ki bi potekala skozi kolinearne točke.
 \end{dokaz}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Imejmo sedaj tri točke v ravnini $T_0, T_1, T_2$. Iščemo parabolično krivuljo $(p, q)$, ki bo pri nekih parametrih $t_0, t_1, t_2$ interpolirala dane točke, to je % JE TO PRAV ???
-
+Imejmo sedaj tri nekolinearne točke v ravnini $T_0, T_1, T_2$. Iščemo parabolično krivuljo $(p, q)$, ki bo pri nekih parametrih $t_0, t_1, t_2$ interpolirala dane točke, to je % JE TO PRAV ???
 $$ T_0 = (p(t_0), q(t_0)), \qquad T_1 = (p(t_1), q(t_1)), \qquad T_2 = (p(t_2), q(t_2)).$$
 Za parametre $t_0, t_1, t_2$ lahko zahtevamo $t_0 < t_1 < t_2$ in še dodatno $t_0 = 0$ in $t_2 = 1$. Za poljuben $t_1 \in (0,1)$  lahko najdemo taka $p(t), q(t)$ stopnje največ dve, da bo krivulja $ \{(p, q), t \in [0,1] \}$ rešila naš interpolacijski problem. Označimo $t_1$ z $\al.$  Polinoma $p$ in $q$  lahko dobimo z reševanjem sistema enačb
 \begin{equation}\label{sistem}
@@ -310,7 +336,7 @@ Analogno velja za polinom $q$, torej smo res našli kvadratično parametrizacijo
 
 Definirajmo še dve matriki in množico, ki jih bomo potrebovali za dokaz glavnega izreka nekoliko kasneje.
 
-\begin{definicija}
+\begin{definicija}\label{aalfa}
 Definiramo matriki
 
 $$A_{\al} = V(\al) \ D \ V(\al)^T $$
@@ -375,19 +401,46 @@ Opazimo, da velja $\Phi_\al(t) = \Psi(t_0 + (t_2 - t_0)t)$
 
 
 Za dane nekolinearne točke $T_0, T_1, T_2$ lahko vpeljemo \emph{poševni koordinatni sistem} tako, da za neko četrto točko $T_3$ obstaja vektor $p = (p_0, p_1, p_2)$, da velja
-$$(T_3, 1) = p R(T_0, T_1, T_2).$$ Sledi $ p = (T_3, 1) R(T_0, T_1, T_2)^{-1}$.
+% SPREMENJENO; DODANA VSOTA
+\begin{align*}
+(T_3, 1) &= \sum_{i=0}^{2} p_i (T_i, 1) \\
+	   & = p R(T_0, T_1, T_2).
+	   \end{align*}
+% KONEC SPREMEMBE 
+Sledi $ p = (T_3, 1) R(T_0, T_1, T_2)^{-1}$.
 
 Nekaj lastnosti tako definiranega vektorja $p$ podaja spodnja trditev.
 
-\begin{trditev}
+\begin{trditev}\label{vektorp}
 Za zgoraj definiran $p$ velja $p_0 + p_1 + p_2 = 1$ in $p_i = 0$ natanko tedaj, ko točka $T_3$ leži na isti premici kot točki $T_j$ in $T_k$, $j, k \in \{0, 1, 2 \}$. 
 \end{trditev}
 
+% NOVO %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{dokaz}
+
+Dovolj je dokazati, da velja $p_0 = 0$ in $p_2 = 1- p_1$ natanko tedaj, ko točka $T_3$ leži na isti premici kot točki $T_1$ in $T_2$.
+Vektor $p$ je v tem primeru enak $(0, p_1, 1-p_1)$. Glede na definicijo poševnega koordinatnega sistema velja
+$$(T_3, 1) = (x_3, y_3, 1) = (p_1 x_1 + (1-p_2)x_2, p_1 y_1 + (1- p_2) y_2, 1).$$
+Premica, ki poteka skozi točki $T_1$ in $T_2$, je podana z enačbo
+$$ y = \frac{y_2 - y_1}{x_2 - x_1} x + \frac{x_2 y_1 - x_1 y_2}{x_2 - x_1} .$$
+Z enostavnim računom se prepričamo, da točka $T_3$ leži na tej premici.
+
+\end{dokaz}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 Označimo sedaj s $T = \{T_0, T_1, T_2, T_3 \}$ nabor štirih točk v ravnini, od katerih nobene tri niso kolinearne. Take točke so oglišča konveksnega štirikotnika, če nobena točka $T_i$ ni v konveksni lupini preostalih treh točk.
 
-\begin{trditev}
-Točke iz $P$ so oglišča konveksnega štirikotnika natanko tedaj, ko velja $p_0 p_1 p_2 < 0$, kjer so $p_0, p_1, p_2$ komponente vektorja $p$, za katerega velja $(T_3, 1) = p R(T_0, T_1, T_2).$
+\begin{trditev}\label{konveks}
+Točke iz $T$ so oglišča konveksnega štirikotnika natanko tedaj, ko velja $p_0 p_1 p_2 < 0$, kjer so $p_0, p_1, p_2$ komponente vektorja $p$, za katerega velja $(T_3, 1) = p R(T_0, T_1, T_2).$
 \end{trditev}
+
+% NOVO %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{dokaz}
+
+% Ne znam.
+
+\end{dokaz}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Sedaj lahko zapišemo glavni izrek prvega poglavja.
 
@@ -406,6 +459,51 @@ Naj bo $T = \{ T_0, T_1, T_2, T_3 \}$ nabor štirih točk v ravnini, od katerih 
 \end{enumerate}
 
 \end{izrek}
+
+\begin{dokaz}
+Matriki $A_\al$ in $B_\al$ smo definirali v \ref{aalfa}. Četrta točke $T_3$ leži na neki parabolični krivulji iz množice  $\B(T_0, T_1, T_2)$ natanko tedaj, ko obstaja tak $\al \in \R - \{0,1 \}$, da točka $T_3$ leži na $C_{B_\al}$. Sledi
+\begin{align}
+0	&= (T_3, 1) B_\al (T_3, 1)^T \nonumber \\
+	&= (T_3, 1) R(T_0, T_1, T_2)^{-1}\  A_{\al} \  (R(T_0, T_1, T_2)^{-1})^T (T_3, 1)^T \nonumber \\
+	&= (p_0, p_1, p_2) A_\al (p_0, p_1, p_2)^T \nonumber \\
+	&= \al^2 p_0 p_1 + (\al - 1)^2 p_1 p_2 + p_0 p_2 \label{14} \\ % Spustimo 2 - lahko izpostavimo iz vseh členov
+	&= \al^2 p_1(p_0 + p_2) - 2 \al p_1 p_2 + p_2(p_0 + p_1). \label{15}
+\end{align}
+Dobili smo kvadratno enačbo za $\al$, katere diskriminanta je 
+\begin{align*}
+D	&= 4 p_1^2 p_2^2 - 4 p_1 p_2(p_0 + p_2)(p_0 + p_1)  \\
+	&= 4 p_1 p_2(p_1 p_2 - (1 - p_1)(1 - p_2))  \\
+	&= 4 p_1 p_2(p_1 p_2 - 1 + p_1 + p_2 - p_1 p_2)  \\
+	&= - 4 p_0 p_1 p_2. 
+\end{align*}
+Upoštevali smo, da velja $ p_0 + p_1 + p_2 = 1$. Produkt $p_0 p_1 p_2$ je različen od nič, saj nobene tri točke niso kolinearne. Opazimo naslednje:
+\begin{enumerate}[a)]
+\item enačba \eqref{15} ima enolično rešitev natanko tedaj, ko je $p_1 = 1$,
+\item $\al = 0$ je ena od rešitev enačbe \eqref{15} natanko tedaj, ko je $p_2 = 1$, % druga rešitev je \al = \frac{2}{p_0 + 1}
+\item $\al = 1$ je ena od rešitev enačbe \eqref{14} natanko tedaj, ko je $p_0 = 1$, % druga rešitev je \al = \frac{p_2 - 1}{p_2 + 1}
+\end{enumerate}
+
+Če sta dva od parametrov $p_0, p_1, p_2$ enaka $1$, je rešitev enačbe \eqref{15} bodisi $\al = 0$ bodisi $\al = 1$. V tem primeru ne obstaja interpolacijska parabolična krivulja za dane točke. Izkaže se, da so tem primeru točke iz $T$ oglišča paralelograma.
+
+Če je natanko en od parametrov $p_0, p_1, p_2$ enak $1$, ima enačba \eqref{15} natanko eno rešitev. Natančneje, 
+\begin{itemize}
+\item če je $p_0 = 1$, je rešitev $\al = \frac{1 - p_2}{2}$,
+\item če je $p_1 = 1$, je rešitev $\al = \frac{p_2 - 1}{p_2 + 1}$,
+\item če je $p_2 = 1$, je rešitev $\al = \frac{2}{p_0 + 1}$.
+\end{itemize}
+V tem primeru so točke it $T$ oglišča trapeza, ki ni paralelogram.
+
+Če so vse vrednosti parametrov $p_0, p_1, p_2$ različne od $1$, točke iz $T$ niso oglišča trapeza. Iz posledice \ref{konveks} sledi, da so točke iz $T$ oglišča konveksnega štirikotnika natanko tedaj, ko je $p_0 p_1 p_2 < 0$, kar pomeni, da je diskriminanta enačbe \eqref{15} strogo pozitivna in obstajata dve različni rešitvi. Tedaj lahko točke iz $T$ interpoliramo z dvema različnima paraboličnima krivuljama. 
+
+Enačba \eqref{15} nima rešitve, če je njena diskriminanta negativna. Kot zgoraj je to natanko tedaj, ko so točke iz $T$ oglišča konkavnega štirikotnika.
+\end{dokaz}
+
+Konkreten interpolacijski problem rešimo tako, da izračunamo vektor $p$ iz trditve \ref{vektorp}, iz njegovih komponent pa izračunamo ustrezen $\al$. Parametrizacijo krivulje -- torej polinoma $p$ in $q$ -- smo eksplicitno zapisali v dokazu trditve \ref{parametrizacija}, za implicitno obliko parabolične krivulje $C_{B_\al}$ pa izračunamo še matriki $A_\al$ in $B_\al$ iz definicije \ref{aalfa}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \section{Interpolacija z Lagrangeevimi baznimi polinomi}
 
@@ -457,7 +555,11 @@ Spomnimo, da so polinomi $\ell_{i,n}$ stopnje tri. Ker iščemo parabolično kri
 
 za neznana parametra $t_1$ in $t_2$, enačbi pa dobimo iz komponent \eqref{vodkoef}, saj so $T_i$ točke v ravnini.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \section{Hermitov primer}
 
