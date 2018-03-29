@@ -1,0 +1,129 @@
+\documentclass{beamer}
+
+\usepackage[slovene]{babel}
+\usepackage{amsfonts,amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+
+\usetheme{Warsaw}
+
+\def\N{\mathbb{N}} % mnozica naravnih stevil
+\def\Z{\mathbb{Z}} % mnozica celih stevil
+\def\Q{\mathbb{Q}} % mnozica racionalnih stevil
+\def\R{\mathbb{R}} % mnozica realnih stevil
+\def\C{\mathbb{C}} % mnozica kompleksnih stevil
+
+
+\def\qed{$\hfill\Box$}   % konec dokaza
+\newtheorem{izrek}{Izrek}
+\newtheorem{trditev}{Trditev}
+\newtheorem{posledica}{Posledica}
+\newtheorem{lema}{Lema}
+\newtheorem{definicija}{Definicija}
+\newtheorem{pripomba}{Pripomba}
+\newtheorem{primer}{Primer}
+\newtheorem{zgled}{Zgled}
+\newtheorem{zgledi}{Zgledi uporabe}
+\newtheorem{zglediaf}{Zgledi aritmetičnih funkcij}
+\newtheorem{oznaka}{Oznaka}
+
+\title{Geometrijska interpolacija štirih točk s parabolično krivuljo}
+\author{Tjaša Bajc}
+\institute{mentorica \\ izr.~prof.~dr.~Marjetka Knez}
+
+\date{3.\ april 2017}
+
+\begin{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{frame}
+%\frametitle{Opis problema}
+%
+%Vprašanje je, ali obstaja parabolična krivulja, ki poteka skozi dane štiri točke v ravnini. Če obstaja, nas zanima, koliko je takih krivulj.
+%
+%Problema se bomo lotili na dva načina.
+%
+%\begin{itemize}
+%
+%\item \textbf{Geometrijski pristop} \\
+%Obravnavamo lik, katerega oglišča so dane točke.
+%
+%\item \textbf{Interpolacija} \\
+% Pomagali si bomo z razvojem po Lagrangeevih baznih polinomih.
+%
+%\end{itemize}
+%
+%\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Geometrijska interpolacija}
+
+Opazujemo štirikotnik, ki ga tvorijo dane štiri točke. Od lastnosti tega štirikotnika je odvisno, ali točke lahko interpoliramo s parabolično krivuljo.
+
+\begin{izrek}
+Naj bo $T = \{ T_0, T_1, T_2, T_3 \}$ nabor štirih točk, od katerih nobene tri niso kolinearne.
+
+\begin{enumerate}[i)]
+\pause
+\item Če so točke iz $T$ oglišča konkavnega štirikotnika, danih točk ne moremo interpolirati s parabolično krivuljo.
+\pause
+\item Če so točke iz $T$ oglišča paralelograma, danih točk ne moremo interpolirati s parabolično krivuljo.
+\pause
+\item Če so točke iz $T$ oglišča trapeza, ki ni paralelogram, lahko dane točke interpoliramo z natanko eno parabolično krivuljo.
+\pause
+\item Če so točke iz $T$ oglišča konveksnega štirikotnika, ki ni trapez, lahko dane točke interpoliramo z natanko dvema paraboličnima krivuljama.
+\end{enumerate}
+
+\end{izrek}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{frame}
+%\frametitle{Lagrangeevi bazni polinomi}
+%
+%Lagrangeevi bazni polinomi tvorijo bazo za prostor polinomov določene stopnje.
+%
+%\pause
+%Oglejmo si polinome $ \ell_{0,2}(t), \ell_{1,2}(t) $ in $ \ell_{2,2}(t) $, ki so baza za prostor polinomov druge stopnje.
+%
+%\begin{definicija}
+%
+%	$$ \ell_{0,2}(t) =  \frac{(t - t_1)(t - t_2)}{(t_0 - t_1)(t_0 - t_2)} $$
+%	$$ \ell_{1,2}(t) =  \frac{(t - t_0)(t - t_2)}{(t_1 - t_0)(t_1 - t_2)} $$
+%	$$ \ell_{2,2}(t) =  \frac{(t - t_0)(t - t_1)}{(t_2 - t_0)(t_2 - t_1)} $$
+%
+%\end{definicija}
+%
+%\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+
+\frametitle{Paralelogram}
+
+%\begin{figure}
+
+%\end{frigure}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
