@@ -1,8 +1,8 @@
 
 % Vektor, ki vsebuje x-koordinate danih treh toèk
-X = [5 -3 2];
+X = [0 -1 3];
 % Vektor, ki vsebuje y-koordinate danih treh toèk
-Y = [3 -6 5];
+Y = [2 -1 -1];
 
 
 %plot(x,y,'*')
@@ -14,7 +14,7 @@ V = @(x) [0 0 1; x^2 x 1; 1 1 1];
 iV = @(x) [1/x 1/(x^2-x) 1/(1-x); -(x+1)/x 1/(x-x^2) x/(x-1); 1 0 0];
 
 % Konfiguracijska matrika za dane tri toèke
-R = [x' y' [1 1 1]'];
+R = [X' Y' [1 1 1]'];
 
 % Matrika, ki podaja parabolo y = x^2
 D = [0 0 1; 0 -2 0; 1 0 0];
@@ -40,8 +40,8 @@ Balfa = @(x) R \ (Aalfa(x) / R');
 % axis([min(X)-1, max(X)+1, min(Y)-1, max(Y)+1])
 % hold off
 
-A = 0.1 * linspace(1,9,30);
-B = 0.1 * linspace(-9,-1,30);
-C = 0.1 * linspace(11,19,30);
-A1 = [B A C];
-narisi(R, iV, A1)
+A = 0.1 * linspace(2,8,30);
+B = 0.1 * linspace(8,2,30);
+% C = 0.1 * linspace(11,19,30);
+% A1 = [B A C];
+narisi3(R, iV, [A B])

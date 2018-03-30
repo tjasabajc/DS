@@ -487,13 +487,17 @@ Upoštevali smo, da velja $ p_0 + p_1 + p_2 = 1$. Produkt $p_0 p_1 p_2$ je razli
 
 Če je natanko en od parametrov $p_0, p_1, p_2$ enak $1$, ima enačba \eqref{15} natanko eno rešitev. Natančneje, 
 \begin{itemize}
-\item če je $p_0 = 1$, je rešitev $\al = \frac{1 - p_2}{2}$,
-\item če je $p_1 = 1$, je rešitev $\al = \frac{p_2 - 1}{p_2 + 1}$,
-\item če je $p_2 = 1$, je rešitev $\al = \frac{2}{p_0 + 1}$.
+\item če je $p_0 = 1$, je rešitev $\al = \frac{p_1 + 1}{p_1 - 1} = \frac{p_2 - 1}{p_2 + 1}$,
+\item če je $p_1 = 1$, je rešitev $\al = \frac{p_0 + 1}{2}$,
+\item če je $p_2 = 1$, je rešitev $\al = \frac{2}{p_0 + 1} = \frac{2}{1-p_2}$.
 \end{itemize}
-V tem primeru so točke it $T$ oglišča trapeza, ki ni paralelogram.
+V tem primeru so točke iz $T$ oglišča trapeza, ki ni paralelogram.
 
-Če so vse vrednosti parametrov $p_0, p_1, p_2$ različne od $1$, točke iz $T$ niso oglišča trapeza. Iz posledice \ref{konveks} sledi, da so točke iz $T$ oglišča konveksnega štirikotnika natanko tedaj, ko je $p_0 p_1 p_2 < 0$, kar pomeni, da je diskriminanta enačbe \eqref{15} strogo pozitivna in obstajata dve različni rešitvi. Tedaj lahko točke iz $T$ interpoliramo z dvema različnima paraboličnima krivuljama. 
+Če so vse vrednosti parametrov $p_0, p_1, p_2$ različne od $1$, točke iz $T$ niso oglišča trapeza. Iz posledice \ref{konveks} sledi, da so točke iz $T$ oglišča konveksnega štirikotnika natanko tedaj, ko je $p_0 p_1 p_2 < 0$, kar pomeni, da je diskriminanta enačbe \eqref{15} strogo pozitivna in obstajata dve različni rešitvi. To sta
+\begin{equation*}
+\al_{1,2} = \frac{p_1 p_2 \pm \sqrt{p_0 p_1 p_2}}{p_1 ( p_0 + p_2)}.
+\end{equation*}
+ Tedaj lahko točke iz $T$ interpoliramo z dvema različnima paraboličnima krivuljama. 
 
 Enačba \eqref{15} nima rešitve, če je njena diskriminanta negativna. Kot zgoraj je to natanko tedaj, ko so točke iz $T$ oglišča konkavnega štirikotnika.
 \end{dokaz}
