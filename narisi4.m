@@ -15,8 +15,8 @@ for i = 1:length(A)
     plot(T(1), T(2), 'ro')
     axis equal
     grid on
-    line([0 0], [min(R(:,2))-d, max(R(:,2))+d]);
-    line([min(X)-d, max(R(:,1))+d], [0 0]);
+    %line([0 0], [min(R(:,2))-d, max(R(:,2))+d]);
+    %line([min(X)-d, max(R(:,1))+d], [0 0]);
     axis([min(X)-d, max(R(:,1))+d-1, min(R(:,2))-d, max(R(:,2))+d])
     t = linspace(0,1);
     al = A(i);
@@ -26,7 +26,7 @@ for i = 1:length(A)
     q = parametrizacija(:,2);
     t1 = linspace(1,3);
     t2 = linspace(-2,0);
-    plot(polyval(p,t), polyval(q,t), 'r', 'LineWidth', 2)
+    plot(polyval(p,t), polyval(q,t), 'r')%, 'LineWidth', 2)
     switch tip
         case 't' 
             %title('TRAPEZ - natanko ena interpolacijska krivulja')

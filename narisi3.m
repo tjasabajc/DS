@@ -12,15 +12,15 @@ clf
 % t = linspace(-3,3);
 % hold on
 for i = 1:length(A)
-    clf
+    %clf
     hold on
     plot(R(:,1), R(:,2), 'ro')
     axis equal
-    grid on
-    line([0 0], [min(R(:,2))-d, max(R(:,2))+d]);
-    line([min(R(:,1))-d, max(R(:,1))+d], [0 0]);
+    %grid on
+    %line([0 0], [min(R(:,2))-d, max(R(:,2))+d]);
+    %line([min(R(:,1))-d, max(R(:,1))+d], [0 0]);
     axis([min(R(:,1))-d, max(R(:,1))+d-1, min(R(:,2))-d, max(R(:,2))+d-1])
-    t = linspace(0,1);
+    t = linspace(0,1,500);
     al = A(i);
     inverz = iV(al);
     parametrizacija = inverz*R;
@@ -28,8 +28,8 @@ for i = 1:length(A)
     q = parametrizacija(:,2);
     % t1 = linspace(1,3);
     % t2 = linspace(-2,0);
-    plot(polyval(p,t), polyval(q,t), 'r', 'LineWidth', 2)
-    title('Interpolacija treh toèk')
+    plot(polyval(p,t), polyval(q,t), 'k')%, 'LineWidth', 2)
+    %title('Interpolacija treh toèk')
     % plot(polyval(p,t1), polyval(q,t1)) % ':'
     % plot(polyval(p,t2), polyval(q,t2)) % ':'
     pause(0.1)
